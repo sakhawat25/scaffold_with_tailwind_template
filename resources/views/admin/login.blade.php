@@ -17,6 +17,8 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="stylesheet" href="{{ asset('admin_assets/css/custom.css') }}">
+
     <!-- [Favicon] icon -->
     <link rel="icon" href="{{ asset('admin_assets/images/favicon.svg') }}" type="image/x-icon" />
     <!-- [Font] Family -->
@@ -65,25 +67,41 @@
                             class="absolute left-[-100px] bottom-[-100px] w-[300px] h-[300px] block rounded-full bg-theme-bg-2 animate-[floating_9s_infinite]"></span>
                     </div>
                     <div class="card sm:my-12  w-full shadow-none">
+                        @include('admin.layouts.flash-messages')
                         <div class="card-body !p-10">
                             <div class="text-center mb-8">
-                                <a href="#"><img src="{{ asset('admin_assets/images/logo-dark.svg') }}" alt="img"
-                                        class="mx-auto auth-logo" /></a>
+                                <a href="#"><img src="{{ asset('admin_assets/images/logo-dark.svg') }}"
+                                        alt="img" class="mx-auto auth-logo" /></a>
                             </div>
                             <h4 class="text-center font-medium mb-4">Login</h4>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="Email Address" />
-                            </div>
-                            <div class="mb-4">
-                                <input type="password" class="form-control" id="floatingInput1"
-                                    placeholder="Password" />
-                            </div>
+                            <form action="{{ route('admin.authenticate') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <input type="email"
+                                        class="form-control @error('email')
+                                        element-invalid
+                                    @enderror"
+                                        id="floatingInput" name="email" placeholder="Email Address"
+                                        value="{{ old('email') }}" />
+                                    @error('email')
+                                        <small class="text-invalid">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="mb-4">
+                                    <input type="password"
+                                        class="form-control @error('password')
+                                        element-invalid
+                                    @enderror"
+                                        id="floatingInput1" name="password" placeholder="Password" />
+                                    @error('password')
+                                        <small class="text-invalid">{{ $message }}</small>
+                                    @enderror
+                                </div>
 
-                            <div class="mt-4 text-center">
-                                <button type="button" class="btn btn-primary mx-auto shadow-2xl">Login</button>
-                            </div>
-
+                                <div class="mt-4 text-center">
+                                    <button type="submit" class="btn btn-primary mx-auto shadow-2xl">Login</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

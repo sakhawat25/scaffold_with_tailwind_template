@@ -1,0 +1,7 @@
+.element-invalid {
+    border-color: red !important;
+}
+
+.text-invalid {
+    color: red !important;
+}

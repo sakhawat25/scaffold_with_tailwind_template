@@ -17,5 +17,6 @@ Route::prefix('admin')->group(function() {
     // Unauthenticated Admin Routes
     Route::middleware('guest:admin')->group(function() {
         Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
+        Route::post('/login', [LoginController::class, 'authenticate'])->name('admin.authenticate');
     });
 });

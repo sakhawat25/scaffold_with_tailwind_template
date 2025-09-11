@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/fonts/material.css') }}" />
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}" id="main-style-link" />
-
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -95,6 +94,8 @@
     <script src="{{ asset('admin_assets/js/component.js') }}"></script>
     <script src="{{ asset('admin_assets/js/theme.js') }}"></script>
     <script src="{{ asset('admin_assets/js/script.js') }}"></script>
+    <!-- Toaster -->
+    <script src="https://unpkg.com/toaster-ui@1.1.5/dist/main.js"></script>
 
     <div class="floting-button fixed bottom-[50px] right-[30px] z-[1030]">
     </div>
@@ -130,7 +131,19 @@
         main_layout_change('vertical');
     </script>
 
+    <script>
+        function showSuccessMessage(message) {
+            const toaster = new ToasterUi();
+            toaster.addToast(message, 'success');
+        }
 
+        function showErrorMessage(message) {
+            const toaster = new ToasterUi();
+            toaster.addToast(message, 'error');
+        }
+    </script>
+
+    @yield('js')
 </body>
 <!-- [Body] end -->
 

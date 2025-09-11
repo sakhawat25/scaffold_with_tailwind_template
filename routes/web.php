@@ -11,7 +11,11 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function() {
     // Authenticated Admin Routes
     Route::middleware('auth:admin')->group(function() {
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+        Route::controller(HomeController::class)->group(function() {
+            Route::get('/dashboard', 'index')->name('admin.dashboard');
+            Route::get('/logout', 'logout')->name('admin.logout');
+            Route::get('/bg-color', 'bgColor')->name('admin.bgcolor');
+        });
     });
 
     // Unauthenticated Admin Routes

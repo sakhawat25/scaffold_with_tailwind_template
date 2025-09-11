@@ -393,3 +393,17 @@
     </div>
     <!-- [ Main Content ] end -->
 @endsection
+
+@section('js')
+    @if (session()->has('success'))
+        <script>
+            showSuccessMessage(@json(session('success')))
+        </script>
+    @endif
+
+    @if (session()->has('error'))
+        <script>
+            showErrorMessage(@json(session('error')))
+        </script>
+    @endif
+@endsection

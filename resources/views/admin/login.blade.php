@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/fonts/material.css') }}" />
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}" id="main-style-link" />
-
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -67,7 +66,6 @@
                             class="absolute left-[-100px] bottom-[-100px] w-[300px] h-[300px] block rounded-full bg-theme-bg-2 animate-[floating_9s_infinite]"></span>
                     </div>
                     <div class="card sm:my-12  w-full shadow-none">
-                        @include('admin.layouts.flash-messages')
                         <div class="card-body !p-10">
                             <div class="text-center mb-8">
                                 <a href="#"><img src="{{ asset('admin_assets/images/logo-dark.svg') }}"
@@ -118,6 +116,8 @@
     <script src="{{ asset('admin_assets/js/component.js') }}"></script>
     <script src="{{ asset('admin_assets/js/theme.js') }}"></script>
     <script src="{{ asset('admin_assets/js/script.js') }}"></script>
+    <!-- Toaster -->
+    <script src="https://unpkg.com/toaster-ui@1.1.5/dist/main.js"></script>
 
     <div class="floting-button fixed bottom-[50px] right-[30px] z-[1030]">
     </div>
@@ -153,7 +153,29 @@
         main_layout_change('vertical');
     </script>
 
+    <script>
+        function showSuccessMessage(message) {
+            const toaster = new ToasterUi();
+            toaster.addToast(message, 'success');
+        }
 
+        function showErrorMessage(message) {
+            const toaster = new ToasterUi();
+            toaster.addToast(message, 'error');
+        }
+    </script>
+
+    @if (session()->has('success'))
+        <script>
+            showSuccessMessage(@json(session('success')))
+        </script>
+    @endif
+
+    @if (session()->has('error'))
+        <script>
+            showErrorMessage(@json(session('error')))
+        </script>
+    @endif
 </body>
 <!-- [Body] end -->
 

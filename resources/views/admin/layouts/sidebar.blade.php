@@ -27,7 +27,7 @@
                     <i data-feather="feather"></i>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="../elements/bc_color.html" class="pc-link">
+                    <a href="{{ route('admin.bgcolor') }}" class="pc-link">
                         <span class="pc-micon"> <i data-feather="edit"></i></span>
                         <span class="pc-mtext">Color</span>
                     </a>

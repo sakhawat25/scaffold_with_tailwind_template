@@ -19,6 +19,22 @@ class HomeController extends Controller
     }
 
     public function bgColor() {
-        return view('admin.bg-color');
+        return view('admin.pages.bg-color');
+    }
+
+    public function typography() {
+        return view('admin.pages.typography');
+    }
+
+    public function icons() {
+        return view('admin.pages.icons');
+    }
+
+    public function loginv1() {
+        return view('admin.pages.login');
+    }
+
+    public function registerv1() {
+        return view('admin.pages.register');
     }
 }

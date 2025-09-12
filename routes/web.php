@@ -15,6 +15,10 @@ Route::prefix('admin')->group(function() {
             Route::get('/dashboard', 'index')->name('admin.dashboard');
             Route::get('/logout', 'logout')->name('admin.logout');
             Route::get('/bg-color', 'bgColor')->name('admin.bgcolor');
+            Route::get('/typography', 'typography')->name('admin.typography');
+            Route::get('/icons', 'icons')->name('admin.icons');
+            Route::get('/loginv1', 'loginv1')->name('admin.loginv1');
+            Route::get('/registerv1', 'registerv1')->name('admin.registerv1');
         });
     });
 
